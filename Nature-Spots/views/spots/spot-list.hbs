@@ -1,0 +1,21 @@
+<h1>Nature Spots</h1>
+
+{{#each spots}}
+  <div>
+    <h3>{{title}}</h3>
+    <p>Country: {{country}}</p>
+    <p>Continent: {{continent}}</p>
+    <p>Description: {{description}}</p>
+    <img src="{{imageUrl}}" alt="" />
+
+    <a href="/nature-spots/details/{{_id}}">See details</a>
+    <!-- point to details page -->
+    <a href="/books/{{_id}}/edit">Edit</a>
+    <form action="/favorites" method="post">
+      <input type="hidden" name="spotId" value="{{_id}}" />
+      <button type="submit">Add to Favorites</button>
+    </form>
+  </div>
+{{/each}}
+
+<a href="/nature-spots/create">Create New Spot</a>
