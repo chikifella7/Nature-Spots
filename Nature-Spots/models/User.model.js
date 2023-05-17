@@ -21,6 +21,12 @@ const userSchema = new Schema(
       type: String,
       required: [true, "Password is required"],
     },
+    reviews: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Review",
+      },
+    ],
     favorites: [{ type: Schema.Types.ObjectId, ref: "Nature" }],
   },
   {

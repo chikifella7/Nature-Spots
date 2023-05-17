@@ -1,0 +1,40 @@
+<h1>Edit Spot</h1>
+
+<div>
+  <form action="/nature-spots/edit/{{spot._id}}" method="post">
+    <label for="title">Title:</label>
+    <input type="text" name="title" id="title" value="{{spot.title}}" />
+
+    <label for="country">Country:</label>
+    <input type="text" name="country" id="country" value="{{spot.country}}" />
+
+    <label for="continent">Continent:</label>
+    <input
+      type="text"
+      name="continent"
+      id="continent"
+      value="{{spot.continent}}"
+    />
+
+    <label for="description">Description:</label>
+    <textarea
+      name="description"
+      id="description"
+      cols="30"
+      rows="5"
+    >{{spot.description}}</textarea>
+
+    <label for="imageUrl">Image URL:</label>
+    <input
+      type="text"
+      name="imageUrl"
+      id="imageUrl"
+      value="{{spot.imageUrl}}"
+    />
+
+    <button type="submit">Update Spot</button>
+  </form>
+</div>
+
+<!-- Back button -->
+<a href="/nature-spots/details/{{spot._id}}">Back</a>

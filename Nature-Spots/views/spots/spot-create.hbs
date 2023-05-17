@@ -1,21 +1,23 @@
 <!-- create-spot.hbs -->
+<div class="form-container">
 <h1>Create a New Spot</h1>
 
-<form action="/nature-spots/create" method="post">
+<form action="/nature-spots/create" method="post" enctype="multipart/form-data">
   <label for="name">Name:</label>
-  <input type="text" id="name" name="name" required />
+  <input type="text" id="name" name="title" required />
 
   <label for="country">Country:</label>
   <input type="text" id="country" name="country" required />
 
-  <label for="city">City:</label>
-  <input type="text" id="city" name="city" required />
+  <label for="city">Continent:</label>
+  <input type="text" id="city" name="continent" required />
 
   <label for="description">Description:</label>
   <input type="text" id="city" name="description" required />
 
-  <label for="description">Image:</label>
-  <input type="image" id="ima" name="description" required />
+  <label for="image">Image:</label>
+  <input type="file" id="image" name="imageUrl" required />
 
   <button type="submit">Create Spot</button>
 </form>
+</div>
