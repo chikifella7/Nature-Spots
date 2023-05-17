@@ -197,4 +197,20 @@ router.post("/nature-spots/create", async (req, res) => {
   }
 });
 
+//Delete
+router.post('/nature-spots/delete/:id', async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const deletedNatureSpot = await Nature.findByIdAndDelete({ _id: mongoose.Types.ObjectId(id) });
+
+
+    res.redirect('/');
+  } catch (error) {
+    console.log(error);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
+
 module.exports = router;

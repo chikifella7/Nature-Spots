@@ -5,7 +5,6 @@
     <h3>{{title}}</h3>
     <p>Country: {{country}}</p>
     <p>Continent: {{continent}}</p>
-    <p>Description: {{description}}</p>
     <img src="{{imageUrl}}" alt="" />
 
     <a href="/nature-spots/details/{{_id}}">See details</a>
@@ -14,7 +13,7 @@
     <form action="/favorites" method="post">
       <input type="hidden" name="spotId" value="{{_id}}" />
       <button type="submit">Add to Favorites</button>
-    </form>
+     </form>
   </div>
 {{/each}}
 
