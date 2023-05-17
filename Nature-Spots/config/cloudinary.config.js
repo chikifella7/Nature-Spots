@@ -22,3 +22,6 @@ const storage = new CloudinaryStorage({
 
 //                     storage: storage
 module.exports = multer({ storage });
+
+// Exporting Cloudinary Configuration
+module.exports = multer({storage});

@@ -160,7 +160,7 @@ const spots = [
     description:
       " The Azores, rising from the ocean atop the Mid-Atlantic Ridge, are in effect a major mountain range. The islands rise steeply from shores lined with rock and pebble debris (scree, or talus)on Pico, the highest point in metropolitan Portugal.The Azores have a subtropical climate with high humidity. An abundant flora of European and Mediterranean origins is found there, and mixed forests still cover many of the islands’",
     imageUrl:
-      "https://www.portugal.net/en/wp-content/uploads/sites/107/Sao-Miguel-Azzorre.jpg",
+      "https://julesverne.ontigerbay.co.uk/content/Pictures/Pico-Mountain-Azores.jpg",
   },
   {
     title: "Råbjerg Mile",
