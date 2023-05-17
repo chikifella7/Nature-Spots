@@ -2,11 +2,13 @@ const router = require("express").Router();
 const Nature = require("../models/Nature.model");
 const User = require("../models/User.model");
 const Review = require("../models/Review.model");
+const cloudinary = require("cloudinary").v2;
+const fileUploader = require("../config/cloudinary.config");
 
 //EDIT PROFILE ROUTES
 
 router.get("/profile", (req, res) => {
-  res.render("edit-profile.hbs");
+  res.render("profile.hbs");
 });
 
 router.get("/edit-profile", (req, res) => {
@@ -17,8 +19,7 @@ router.post("/edit-profile", async (req, res) => {
   try {
     const { email, username } = req.body;
     const updatedUser = await User.findByIdAndUpdate(
-      /* req.session.currentUser._id */
-      "64620a41c64586da974e8188",
+      req.session.currentUser._id,
       { email, username },
       { new: true }
     );
@@ -129,12 +130,11 @@ router.get("/nature-spots/recommended", (req, res) => {
 //REVIEW ROUTES
 //POST	/private/favorites/review/:id	Private route. Adds a new review for the current user.
 
-router.post("/nature-spots/review", async (req, res) => {
+/*router.post("/nature-spots/review", async (req, res) => {
   try {
     const { review, rating } = req.body;
     await Review.create(
-      /* req.session.currentUser._id */
-      "64620a41c64586da974e8188",
+      req.session.currentUser._id ,
       { review, rating },
       { new: true }
     );
@@ -142,10 +142,48 @@ router.post("/nature-spots/review", async (req, res) => {
   } catch (error) {
     console.log(error);
   }
+});*/
+
+router.post("/nature-spots/review", async (req, res) => {
+  try {
+    const { spotId, content, rating } = req.body;
+    const spot = await Nature.findById(spotId);
+
+    const newReview = await Review.create({
+      content,
+      rating,
+      author: req.session.currentUser._id,
+    });
+
+    spot.reviews.push(newReview);
+    await spot.save();
+
+    res.redirect(`/nature-spots/details/${spotId}`);
+  } catch (error) {
+    console.log(error);
+  }
 });
+
+router.get("/nature-spots/details/:id", async (req, res) => {
+  try {
+    const spotId = req.params.id;
+    const spot = await Nature.findById(spotId).populate({
+      path: "reviews",
+      populate: {
+        path: "author",
+        model: "User",
+      },
+    });
+
+    res.render("spots/spot-details.hbs", { spot });
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 //GET	private/nature-spots/review/update/:id	Private route. Renders a form to update reviews.
 
-router.get("/nature-spots/review/update/:id", (req, res) => {
+/*router.get("/nature-spots/review/update/:id", (req, res) => {
   res.render("nature-spots-review-update.hbs");
 });
 //POST	/private/favorites/review/update/:id	Private route. Updates review for the current user.
@@ -154,12 +192,37 @@ router.post("/nature-spots/review/update/:id", async (req, res) => {
   try {
     const { review, rating } = req.body;
     await Review.findByIdAndUpdate(
-      /* req.session.currentUser._id */
-      "64621e05e7dc57cf96a6bd8c",
+      req.session.currentUser._id ,
       { review, rating },
       { new: true }
     );
     res.redirect("/nature-spots");
+  } catch (error) {
+    console.log(error);
+  }
+});*/
+
+// GET /nature-spots/review/update/:id - Renders a form to update a review
+router.get("/nature-spots/review/update/:id", async (req, res) => {
+  try {
+    const reviewId = req.params.id;
+    const review = await Review.findById(reviewId);
+
+    res.render("review-update.hbs", { review });
+  } catch (error) {
+    console.log(error);
+  }
+});
+
+// POST /nature-spots/review/update/:id - Updates a review
+router.post("/nature-spots/review/update/:id", async (req, res) => {
+  try {
+    const reviewId = req.params.id;
+    const { content, rating } = req.body;
+
+    await Review.findByIdAndUpdate(reviewId, { content, rating });
+
+    res.redirect("/nature-spots/details/:id"); // Replace ":id" with the actual ID of the nature spot
   } catch (error) {
     console.log(error);
   }
@@ -187,28 +250,64 @@ router.get("/nature-spots/create", (req, res) => {
 
 // POST /nature-spots/create - Handle the creation of a new spot
 // Add a route for creating a new spot
-router.post("/nature-spots/create", async (req, res) => {
+router.post(
+  "/nature-spots/create",
+  fileUploader.single("imageUrl"),
+  async (req, res) => {
+    try {
+      const { title, country, continent, description } = req.body;
+      /*       const result = await cloudinary.uploader.upload(req.file.path); // upload the image to Cloudinary */
+
+      const newSpot = await Nature.create({
+        title,
+        country,
+        continent,
+        description,
+        imageUrl: req.file.path,
+      }); // save the image URL in the new spot
+      res.redirect(`/nature-spots/details/${newSpot._id}`);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+);
+
+//Delete
+router.post("/nature-spots/delete/:id", async (req, res) => {
+  const { id } = req.params;
+
   try {
-    const { name, country, city } = req.body;
-    const newSpot = await Nature.create({ name, country, city });
-    res.redirect(`/nature-spots/details/${newSpot._id}`);
+    const deletedNatureSpot = await Nature.findByIdAndDelete(id);
+
+    res.redirect("/nature-spots");
+  } catch (error) {
+    console.log(error);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
+// Render the edit spot form
+router.get("/nature-spots/edit/:id", async (req, res) => {
+  try {
+    const spot = await Nature.findById(req.params.id);
+    res.render("spots/spot-edit", { spot });
   } catch (error) {
     console.log(error);
   }
 });
 
-//Delete
-router.post('/nature-spots/delete/:id', async (req, res) => {
-  const { id } = req.params;
-
+// Update the spot details
+router.post("/nature-spots/edit/:id", async (req, res) => {
   try {
-    const deletedNatureSpot = await Nature.findByIdAndDelete({ _id: mongoose.Types.ObjectId(id) });
-
-
-    res.redirect('/');
+    const { title, country, continent, description, imageUrl } = req.body;
+    const spot = await Nature.findByIdAndUpdate(
+      req.params.id,
+      { title, country, continent, description, imageUrl },
+      { new: true }
+    );
+    res.redirect(`/nature-spots/details/${spot._id}`);
   } catch (error) {
     console.log(error);
-    res.status(500).send('Internal Server Error');
   }
 });
 

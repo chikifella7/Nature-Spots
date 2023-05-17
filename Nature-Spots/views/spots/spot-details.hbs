@@ -1,35 +1,50 @@
-<!-- spot-details.hbs -->
+<div class="details-container">
+<h1>Nature Spot Details</h1>
 
-<h1>{{spot.title}}</h1>
-<p>Country: {{spot.country}}</p>
-<p>Continent: {{spot.continent}}</p>
-<p>Description: {{spot.description}}</p>
-<img src="{{spot.imageUrl}}" alt="">
+<div>
+  <h3>{{spot.title}}</h3>
+  <p>Country: {{spot.country}}</p>
+  <p>Continent: {{spot.continent}}</p>
+  <p>Description: {{spot.description}}</p>
+  <img src="{{spot.imageUrl}}" alt="" />
 
-<!-- Display spot reviews -->
-<h3>Reviews:</h3>
-{{#if spot.reviews.length}}
-  {{#each spot.reviews}}
-    <div>
-      <p>By {{author.username}}:</p>
-      <p>{{content}}</p>
-    </div>
-  {{/each}}
-{{else}}
-  <p>No reviews available.</p>
-{{/if}}
-
-<!-- Review Form -->
-<h3>Add a Review:</h3>
-<form action="/nature-spots/review" method="post">
-  <input type="hidden" name="spotId" value="{{spot._id}}" />
-  <label for="content">Content:</label>
-  <textarea name="content" id="content" cols="30" rows="5"></textarea>
-  <button type="submit">Submit</button>
-</form>
-    <form action="/nature-spots/delete/{{id}}" method="post" style="margin: 0">
-  <button class="btn btn-outline-dark btn-sm" type="submit">Delete</button>
+  <h3>Add a Review:</h3>
+  <form action="/nature-spots/review" method="post">
+    <input type="hidden" name="spotId" value="{{spot._id}}" />
+    <label for="content">Content:</label>
+    <textarea name="content" id="content" cols="30" rows="5"></textarea>
+    <label for="rating">Rating:</label>
+    <input type="number" name="rating" id="rating" min="1" max="5" />
+    <button type="submit">Submit</button>
   </form>
 
+  <!-- Existing code -->
+
+  <h3>Reviews:</h3>
+  {{#if spot.reviews.length}}
+    {{#each spot.reviews}}
+      <div>
+        {{#if author}}
+          <p>By: {{author.username}}</p>
+        {{/if}}
+        {{#if content}}
+          <p>Review: {{content}}</p>
+        {{/if}}
+        {{#if rating}}
+          <p>Rating: {{rating}}</p>
+        {{/if}}
+      </div>
+    {{/each}}
+  {{else}}
+    <p>No reviews yet.</p>
+  {{/if}}
+
+  <!-- Existing code -->
+
+</div>
+
 <!-- Back button -->
+
+</div>
+
 <a href="/nature-spots">Back</a>

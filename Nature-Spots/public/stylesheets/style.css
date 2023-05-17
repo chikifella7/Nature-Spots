@@ -1,4 +1,4 @@
-.navbar{
+.navbar {
   background-color: black;
   color: beige;
   display: flex;
@@ -18,12 +18,21 @@
   margin-right: 10px;
 }
 .navbar-brand {
-  font-size: 30px;
-  font-style: italic;
+  font-size: 24px;
   font-weight: bold;
   text-transform: uppercase;
   padding: 20px 20px;
-  background: linear-gradient(45deg, #ff3366, #ff9933, #ffff66, #66ccff, #9933ff, #ff3366, rgb(7, 130, 7), rgb(126, 39, 126));
+  background: linear-gradient(
+    45deg,
+    #ff3366,
+    #ff9933,
+    #ffff66,
+    #66ccff,
+    #9933ff,
+    #ff3366,
+    rgb(7, 130, 7),
+    rgb(126, 39, 126)
+  );
   background-size: 600% 600%;
   -webkit-animation: aurora-gradient 05s ease infinite;
   -moz-animation: aurora-gradient 05s ease infinite;
@@ -32,89 +41,14 @@
   -webkit-background-clip: text;
 }
 
-@-webkit-keyframes aurora-gradient {
-  0%{background-position:0% 50%}
-  50%{background-position:100% 50%}
-  100%{background-position:0% 50%}
+a {
+  color: #00b7ff;
 }
 
-@-moz-keyframes aurora-gradient {
-  0%{background-position:0% 50%}
-  50%{background-position:100% 50%}
-  100%{background-position:0% 50%}
+h1 {
+  color: 15px;
 }
 
-@keyframes aurora-gradient { 
-  0%{background-position:0% 50%}
-  50%{background-position:100% 50%}
-  100%{background-position:0% 50%}
-}
 img {
   height: 200px;
-  object-fit: cover;
-  border-radius: 4px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-.navbar-item a:hover {
-  background-color:chartreuse;
-}
-
-
-/* Tutorial CSS starts here */
-:root {
-  --bg: white;
-  --text: black;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: black;
-    --text: white;
-  }
-}
-
-#color-mode:checked ~ * {
-  --bg: black;
-  --text: white;
-}
-
-@media (prefers-color-scheme: dark) {
-  #color-mode:checked ~ * {
-    --bg: white;
-    --text: black;
-  }
-}
-
-.color-scheme-wrapper {
-  min-height: 100vh;
-  background: var(--bg);
-  color: var(--text);
-}
-
-.light-mode-hide {
-  display: none;
-}
-
-@media (prefers-color-scheme: dark) {
-  .dark-mode-hide {
-    display: none;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  .light-mode-hide {
-    display: initial;
-  }
-}
-
-/* Tutorial css ends here, the rest is extra styles for prettiness */
-#color-mode:checked + label:after {
-  color: var(--bg);
-  content: "\u{1F321}"; /* Unicode character for a small toggle icon */
-  margin-left: 0.5rem; /* Adjust the margin as needed */
-}
-
-label:after {
-  content: "\u{1F320}"; /* Unicode character for the default toggle icon */
-  /* Existing styles */
 }
