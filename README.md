@@ -22,8 +22,8 @@ Search platform for nature spots around the globe and creating the favorite list
 - **logout** - As a user I want to be able to log out from the web page so that I can make sure no one will access my account
 - **favorite list** - As a user I want to see the list of my favorite and delete them.
 - **edit user** - As a user I want to be able to edit my profile.
-- **nature spots listing** - As a user I want to see the list of nature spots.
-- **nature spots details** - As a user I want to see more details of the spot.
+- **result** - As a user I want to see the list of nature spots.
+- **nature spots listing** - As a user I want to see more details of the spot.
 
 
 
@@ -49,14 +49,8 @@ Search platform for nature spots around the globe and creating the favorite list
 | `DELETE`   | `/private/favorites/:natureId`      | Private route. Deletes the existing favorite from the current user. |                                                          |
 | `GET`      | `/nature-spots`                     | Renders `nature-spots-list` view.                              |                                                          |
 | `GET`      | `/private/nature-spots/details/:id`         | Renders `nature-spots-details` view for the particular nature spot details. |                                                          |
-| `POST`     | `/private/favorites/review/:id`        | Private route. Adds a new review for the current user.     |
+| `POST`     | `/private/favorites/reviews`        | Private route. Adds a new review for the current user.     |
 | `GET`      | `/nature-spots/recommended`                     | Renders a recommended nature spots by crontributors.|
-| `GET`      | `private/nature-spots/review/update/:id`                     | Private route. Renders a form to update reviews.|
-| `POST`     | `/private/favorites/review/update/:id`        | Private route. Updates review for the current user.     |
-
-
-Get to update a review
-Post route to submit edited review
 
 
 
@@ -73,37 +67,18 @@ User model
   email: String,
   password: String,
   favorites: [FavoriteId],
+  reviews: [String]
 }
 
 ```
 
-Natural-places model
-```javascript
-{
-  name: String,
-  country: String,
-  continent: String,
-  description: String,
-  image: Img 
-}
 
-```
 
 Favorites model
 
 ```javascript
 {
   placeId: String,
-}
-
-```
-
-Review model
-
-```javascript
-{
-  review: String
-  rating: Number
 }
 
 ```
@@ -125,7 +100,7 @@ Mongoose
 
 Hbs
 
-dotenv
+.env
 
 cloudinary
 
@@ -136,13 +111,7 @@ ironlauncher
 
 <br>
 
-## Extra features
 
-Displaying list by rating
-Displaying list by continent
-
-
-<br>
 
 ## Backlog
 
