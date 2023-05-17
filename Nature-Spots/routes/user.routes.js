@@ -7,8 +7,19 @@ const fileUploader = require("../config/cloudinary.config");
 
 //EDIT PROFILE ROUTES
 
-router.get("/profile", (req, res) => {
-  res.render("profile.hbs");
+router.get("/profile", async (req, res) => {
+  try {
+    const userId = req.session.currentUser._id;
+    const user = await User.findById(userId);
+
+    if (!user) {
+      return res.status(404).send("User not found");
+    }
+
+    res.render("profile.hbs", { user });
+  } catch (error) {
+    console.error(error);
+  }
 });
 
 router.get("/edit-profile", (req, res) => {
@@ -203,19 +214,19 @@ router.post("/nature-spots/review/update/:id", async (req, res) => {
 });*/
 
 // GET /nature-spots/review/update/:id - Renders a form to update a review
-router.get("/nature-spots/review/update/:id", async (req, res) => {
+router.get("/nature-spots/review/:id/update", async (req, res) => {
   try {
-    const reviewId = req.params.id;
-    const review = await Review.findById(reviewId);
+    const { id } = req.params;
+    const review = await Review.findById(id);
 
-    res.render("review-update.hbs", { review });
+    res.render("/review-update.hbs", { review });
   } catch (error) {
     console.log(error);
   }
 });
 
 // POST /nature-spots/review/update/:id - Updates a review
-router.post("/nature-spots/review/update/:id", async (req, res) => {
+router.post("/nature-spots/review/:id/update", async (req, res) => {
   try {
     const reviewId = req.params.id;
     const { content, rating } = req.body;
@@ -310,6 +321,5 @@ router.post("/nature-spots/edit/:id", async (req, res) => {
     console.log(error);
   }
 });
-
 
 module.exports = router;

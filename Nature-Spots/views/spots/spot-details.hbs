@@ -1,49 +1,50 @@
 <div class="details-container">
-<h1>Nature Spot Details</h1>
+  <h1>Nature Spot Details</h1>
 
-<div>
-  <h3>{{spot.title}}</h3>
-  <p>Country: {{spot.country}}</p>
-  <p>Continent: {{spot.continent}}</p>
-  <p>Description: {{spot.description}}</p>
-  <img src="{{spot.imageUrl}}" alt="" />
+  <div>
+    <h3>{{spot.title}}</h3>
+    <p>Country: {{spot.country}}</p>
+    <p>Continent: {{spot.continent}}</p>
+    <p>Description: {{spot.description}}</p>
+    <img src="{{spot.imageUrl}}" alt="" />
 
-  <h3>Add a Review:</h3>
-  <form action="/nature-spots/review" method="post">
-    <input type="hidden" name="spotId" value="{{spot._id}}" />
-    <label for="content">Content:</label>
-    <textarea name="content" id="content" cols="30" rows="5"></textarea>
-    <label for="rating">Rating:</label>
-    <input type="number" name="rating" id="rating" min="1" max="5" />
-    <button type="submit">Submit</button>
-  </form>
+    <h3>Add a Review:</h3>
+    <form action="/nature-spots/review" method="post">
+      <input type="hidden" name="spotId" value="{{spot._id}}" />
+      <label for="content">Content:</label>
+      <textarea name="content" id="content" cols="30" rows="5"></textarea>
+      <label for="rating">Rating:</label>
+      <input type="number" name="rating" id="rating" min="1" max="5" />
+      <button type="submit">Submit</button>
+    </form>
 
-  <!-- Existing code -->
+    <!-- Existing code -->
 
-  <h3>Reviews:</h3>
-  {{#if spot.reviews.length}}
-    {{#each spot.reviews}}
-      <div>
-        {{#if author}}
-          <p>By: {{author.username}}</p>
-        {{/if}}
-        {{#if content}}
-          <p>Review: {{content}}</p>
-        {{/if}}
-        {{#if rating}}
-          <p>Rating: {{rating}}</p>
-        {{/if}}
-      </div>
-    {{/each}}
-  {{else}}
-    <p>No reviews yet.</p>
-  {{/if}}
+    <h3>Reviews:</h3>
+    {{#if spot.reviews.length}}
+      {{#each spot.reviews}}
+        <div>
+          {{#if author}}
+            <p>By: {{author.username}}</p>
+          {{/if}}
+          {{#if content}}
+            <p>Review: {{content}}</p>
+          {{/if}}
+          {{#if rating}}
+            <p>Rating: {{rating}}</p>
+          {{/if}}
+        </div>
+        <a href="/review">Edit Review</a>
+      {{/each}}
+    {{else}}
+      <p>No reviews yet.</p>
+    {{/if}}
 
-  <!-- Existing code -->
+    <!-- Existing code -->
 
-</div>
+  </div>
 
-<!-- Back button -->
+  <!-- Back button -->
 
 </div>
 
