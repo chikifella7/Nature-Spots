@@ -324,4 +324,10 @@ router.post("/nature-spots/edit/:id", async (req, res) => {
   }
 });
 
+
+//About us
+router.get("/about-us", (req, res) => {
+  res.render("about-us.hbs");
+});
+
 module.exports = router;

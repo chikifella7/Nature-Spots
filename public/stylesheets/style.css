@@ -19,6 +19,7 @@
 }
 .navbar-brand {
   font-size: 24px;
+  font-style: italic;
   font-weight: bold;
   text-transform: uppercase;
   padding: 20px 20px;
@@ -379,34 +380,7 @@ img {
 }
 
 /* PROFILE */
-.profile-container {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #f5f5f5;
-  border-radius: 5px;
-}
 
-.profile-container h1 {
-  font-size: 24px;
-  text-align: center;
-}
-
-.profile-container h3 {
-  font-size: 18px;
-  margin-top: 20px;
-}
-
-.profile-container p {
-  font-size: 16px;
-  margin-bottom: 10px;
-}
-
-.profile-container a {
-  display: block;
-  text-align: center;
-  margin-top: 20px;
-}
 
 /* Back Button */
 .back-button {
@@ -519,4 +493,126 @@ img {
 
 .createspot-container button[type="submit"]:hover {
   background-color: #45a049;
+}
+
+/* About Us */
+.about-us-section {
+  text-align: center;
+  padding: 20px 0;
+  background-color: #f2f2f2;
+}
+
+.about-us-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: white;
+  color: black;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+.about-us-button:hover {
+  background-color: #45a049;
+}
+
+/* About Us */
+.about-us {
+  max-width: 600px;
+  margin: 40px auto 0;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Rest of the CSS styles remain the same */
+
+.about-us h2 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.about-us p {
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.about-us a {
+  display: inline-block;
+  padding: 5px 10px;
+  background-color: #4caf50;
+  color: #fff;
+  text-decoration: none;
+  margin-right: 10px;
+  border-radius: 4px;
+}
+
+.about-us a:hover {
+  background-color: #45a049;
+}
+
+/* Go back button for profile & edit profile */
+.edit-profile {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+/* PROFILE */
+.profile-container {
+  background-position: center;
+  background-size: cover;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border-radius: 5px;
+  margin-top: 30px;
+}
+
+.profile-container h1 {
+  font-size: 24px;
+  text-align: center;
+}
+
+.profile-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-container .form-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.profile-container label {
+  width: 100px;
+  margin-right: 10px;
+}
+
+.profile-container .edit-link,
+.profile-container .save-button {
+  display: flex;
+  margin-top: 20px;
+  background-color: #0e0f0e;
+  color: #ffffff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+  transition: box-shadow 0.5s ease;
+}
+
+.profile-container .save-button:focus {
+  outline: none;
+}
+.profile-container .save-button:focus {
+  box-shadow: 0 0 10px rgba(5, 6, 5, 0.7), 0 0 0 3px rgba(0, 0, 0, 0.1);
 }
