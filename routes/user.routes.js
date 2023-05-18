@@ -4,6 +4,7 @@ const User = require("../models/User.model");
 const Review = require("../models/Review.model");
 const cloudinary = require("cloudinary").v2;
 const fileUploader = require("../config/cloudinary.config");
+const isLoggedIn = require("../middleware/isLoggedIn");
 
 //EDIT PROFILE ROUTES
 
@@ -121,7 +122,7 @@ router.post("/favorites/:id/delete", async (req, res) => {
 //NATURE SPOT ROUTE AND RECOMMENDED
 //GET	/nature-spots	Renders nature-spots-list view.
 
-router.get("/nature-spots", async (req, res) => {
+router.get("/nature-spots", isLoggedIn, async (req, res) => {
   try {
     // Find all the spots inside the collection
     let allSpotsFromDb = await Nature.find();
@@ -219,7 +220,7 @@ router.get("/nature-spots/review/:id/update", async (req, res) => {
     const { id } = req.params;
     const review = await Review.findById(id);
 
-    res.render("/review-update.hbs", { review });
+    res.render("review-update.hbs", { review });
   } catch (error) {
     console.log(error);
   }
@@ -233,7 +234,8 @@ router.post("/nature-spots/review/:id/update", async (req, res) => {
 
     await Review.findByIdAndUpdate(reviewId, { content, rating });
 
-    res.redirect("/nature-spots/details/:id"); // Replace ":id" with the actual ID of the nature spot
+    // Redirect back to the nature spot details page
+    res.redirect(`/nature-spots/details/${reviewId}`);
   } catch (error) {
     console.log(error);
   }

@@ -1,40 +1,59 @@
-<h1>Edit Spot</h1>
+<!-- edit-spot.hbs -->
 
-<div>
-  <form action="/nature-spots/edit/{{spot._id}}" method="post">
-    <label for="title">Title:</label>
-    <input type="text" name="title" id="title" value="{{spot.title}}" />
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Spot</title>
+    <link rel="stylesheet" type="/stylesheets/style.css" />
+  </head>
+  <body>
+    <div class="editspot-container">
+      <h1>Edit Spot</h1>
 
-    <label for="country">Country:</label>
-    <input type="text" name="country" id="country" value="{{spot.country}}" />
+      <div>
+        <form action="/nature-spots/edit/{{spot._id}}" method="post">
+          <label for="title">Title:</label>
+          <input type="text" name="title" id="title" value="{{spot.title}}" />
 
-    <label for="continent">Continent:</label>
-    <input
-      type="text"
-      name="continent"
-      id="continent"
-      value="{{spot.continent}}"
-    />
+          <label for="country">Country:</label>
+          <input
+            type="text"
+            name="country"
+            id="country"
+            value="{{spot.country}}"
+          />
 
-    <label for="description">Description:</label>
-    <textarea
-      name="description"
-      id="description"
-      cols="30"
-      rows="5"
-    >{{spot.description}}</textarea>
+          <label for="continent">Continent:</label>
+          <input
+            type="text"
+            name="continent"
+            id="continent"
+            value="{{spot.continent}}"
+          />
 
-    <label for="imageUrl">Image URL:</label>
-    <input
-      type="text"
-      name="imageUrl"
-      id="imageUrl"
-      value="{{spot.imageUrl}}"
-    />
+          <label for="description">Description:</label>
+          <textarea
+            name="description"
+            id="description"
+            cols="30"
+            rows="5"
+          >{{spot.description}}</textarea>
 
-    <button type="submit">Update Spot</button>
-  </form>
-</div>
+          <label for="imageUrl">Image URL:</label>
+          <input
+            type="text"
+            name="imageUrl"
+            id="imageUrl"
+            value="{{spot.imageUrl}}"
+          />
+
+          <button type="submit">Update Spot</button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
 
 <!-- Back button -->
-<a href="/nature-spots/details/{{spot._id}}">Back</a>
+<a href="/nature-spots/details/{{spot._id}}" class="back-button">Back</a>

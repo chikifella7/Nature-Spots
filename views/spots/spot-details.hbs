@@ -34,7 +34,9 @@
             <p>Rating: {{rating}}</p>
           {{/if}}
         </div>
-        <a href="/review">Edit Review</a>
+        <a href="/nature-spots/review/{{_id}}/update">Edit Review</a>
+
+        <!-- Update this line -->
       {{/each}}
     {{else}}
       <p>No reviews yet.</p>
@@ -48,4 +50,4 @@
 
 </div>
 
-<a href="/nature-spots">Back</a>
+<a href="/nature-spots" class="back-button">Back</a>

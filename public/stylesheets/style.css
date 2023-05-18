@@ -85,6 +85,32 @@ img {
 .navbar-item a:hover {
   background-color: chartreuse;
 }
+/* ... previous CSS styles ... */
+
+.navbar .navbar-brand {
+  color: #fff;
+}
+
+.navbar .navbar-menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar .navbar-item {
+  display: inline-block;
+}
+
+.navbar .navbar-item a {
+  display: block;
+  padding: 10px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.navbar .navbar-item a:hover {
+  background-color: #555;
+}
 
 /*LOG IN */
 /* Styling for the login form */
@@ -380,4 +406,117 @@ img {
   display: block;
   text-align: center;
   margin-top: 20px;
+}
+
+/* Back Button */
+.back-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.5s ease-in;
+}
+
+.back-button:hover {
+  background-color: #2d07d3;
+}
+
+.btn.btn-primary.my-2 {
+  background-color: #4caf50;
+  color: #fff;
+}
+
+/* EDIT PLACE */
+
+.editspot-container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.editspot-container h1 {
+  font-size: 36px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.editspot-container form {
+  margin-bottom: 20px;
+}
+
+.editspot-container label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #333;
+}
+
+.editspot-container input[type="text"],
+.editspot-container textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.editspot-container button[type="submit"] {
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.editspot-container button[type="submit"]:hover {
+  background-color: #45a049;
+}
+
+/* SPOT CREATE */
+.createspot-container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.createspot-container h1 {
+  font-size: 36px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.createspot-container form {
+  margin-bottom: 20px;
+}
+
+.createspot-container label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #333;
+}
+
+.createspot-container input[type="text"],
+.createspot-container input[type="file"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.createspot-container button[type="submit"] {
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.createspot-container button[type="submit"]:hover {
+  background-color: #45a049;
 }
