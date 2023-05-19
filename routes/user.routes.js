@@ -234,8 +234,11 @@ router.post("/nature-spots/review/:id/update", async (req, res) => {
 
     await Review.findByIdAndUpdate(reviewId, { content, rating });
 
+    const updatedReview = await Review.findById(reviewId);
+    const spotId = updatedReview.spot; // Assuming the spot field contains the spotId
+
     // Redirect back to the nature spot details page
-    res.redirect(`/nature-spots/details/${reviewId}`);
+    res.redirect(`/nature-spots/details/${spotId}`);
   } catch (error) {
     console.log(error);
   }
@@ -323,7 +326,6 @@ router.post("/nature-spots/edit/:id", async (req, res) => {
     console.log(error);
   }
 });
-
 
 //About us
 router.get("/about-us", (req, res) => {
