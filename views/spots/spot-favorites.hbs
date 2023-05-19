@@ -2,7 +2,7 @@
   <h1>My Favorites</h1>
 
   {{#each favorites}}
-    <div>
+    <div class="favorite-box">
       <h3>{{title}}</h3>
       <p>Country: {{country}}</p>
       <p>Continent: {{continent}}</p>
@@ -10,12 +10,13 @@
       <img src="{{imageUrl}}" alt="" />
 
       <form action="/favorites/{{_id}}/delete" method="post">
-        <button type="submit">Remove from Favorites</button>
+        <button type="submit" class="remove-button">Remove from Favorites</button>
       </form>
     </div>
   {{else}}
     <p>No favorites yet.</p>
   {{/each}}
 </div>
+
 
 <a href="/nature-spots" class="back-button">Back</a>

@@ -20,27 +20,32 @@
 
     <!-- Existing code -->
 
-    <h3>Reviews:</h3>
-    {{#if spot.reviews.length}}
-      {{#each spot.reviews}}
-        <div>
-          {{#if author}}
-            <p>By: {{author.username}}</p>
-          {{/if}}
-          {{#if content}}
-            <p>Review: {{content}}</p>
-          {{/if}}
-          {{#if rating}}
-            <p>Rating: {{rating}}</p>
-          {{/if}}
-        </div>
-        <a href="/nature-spots/review/{{_id}}/update">Edit Review</a>
+<section class="reviews-section">
+  <h3>Reviews:</h3>
+  {{#if spot.reviews.length}}
+    {{#each spot.reviews}}
+      <div class="review-box">
+        {{#if author}}
+          <p>By: {{author.username}}</p>
+        {{/if}}
+        {{#if content}}
+          <p>Review: {{content}}</p>
+        {{/if}}
+        {{#if rating}}
+          <p>Rating: {{rating}}</p>
+        {{/if}}
+      </div>
+      <a href="/nature-spots/review/{{_id}}/update" class="edit-review-button">Edit Review</a>
+    {{/each}}
+  {{else}}
+    <p>No reviews yet.</p>
+  {{/if}}
+</section>
+
+
 
         <!-- Update this line -->
-      {{/each}}
-    {{else}}
-      <p>No reviews yet.</p>
-    {{/if}}
+    
 
     <!-- Existing code -->
 

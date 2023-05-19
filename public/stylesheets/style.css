@@ -305,6 +305,43 @@ img {
   background-color: #45a049;
 }
 
+.favorite-box {
+  border: 1px solid #ddd;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.favorite-box h3 {
+  color: #333;
+}
+
+.favorite-box p {
+  color: #666;
+}
+
+.favorite-box img {
+  max-width: 100%;
+  height: auto;
+  margin-top: 10px;
+}
+
+.remove-button {
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+  margin-top: 10px; /* Add margin-top to move the button down */
+}
+
+.remove-button:hover {
+  background-color: #c82333;
+}
+
+
 /* SPOT DETAILS */
 /* CSS for the nature spot details container */
 .details-container {
@@ -380,7 +417,6 @@ img {
 }
 
 /* PROFILE */
-
 
 /* Back Button */
 .back-button {
@@ -615,4 +651,44 @@ img {
 }
 .profile-container .save-button:focus {
   box-shadow: 0 0 10px rgba(5, 6, 5, 0.7), 0 0 0 3px rgba(0, 0, 0, 0.1);
+}
+
+/* REVIEW */
+.reviews-section {
+  margin-top: 20px;
+}
+
+.review-box {
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.review-box p {
+  margin: 5px 0;
+}
+
+a {
+  color: #007bff;
+  text-decoration: none;
+  margin-left: 10px;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.edit-review-button {
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: #4caf50;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.edit-review-button:hover {
+  background-color: #0056b3;
 }
